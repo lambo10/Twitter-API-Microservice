@@ -1,5 +1,5 @@
 FROM node:alpine
 COPY . /app
 WORKDIR /app
-EXPOSE 443
+EXPOSE 80
 CMD node app.js
