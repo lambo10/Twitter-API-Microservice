@@ -4,7 +4,7 @@
   "description": "Fetch Posts: This component monitors Twitter for posts containing a specific hashtag. When such a post is found, it fetches the post’s details, including the number of reposts, likes, and views. Interaction: Users interact with this component indirectly when they make a post on Twitter containing the specified hashtag.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",

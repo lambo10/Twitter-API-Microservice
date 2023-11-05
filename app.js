@@ -1,7 +1,7 @@
 const express = require('express');
 const axios = require('axios');
 const app = express();
-const port = 80;
+const port = 8080;
 let testOpenVariable = 0;
 
 app.use(express.json());
