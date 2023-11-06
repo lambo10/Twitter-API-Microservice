@@ -7,6 +7,8 @@ steps:
       - |
         npm install  # Install dependencies
         npm test      # Run unit tests
+        build_logs=$(gcloud builds log $BUILD_ID --format='value(logs)')
+        gcloud alpha services send-email --to=benokafor67@gmail.com --subject="Cloud Build Failure" --message="Your Cloud Build pipeline has failed. Error message: $build_logs"
 
   # Build a Docker container image
   - name: 'gcr.io/cloud-builders/docker'
