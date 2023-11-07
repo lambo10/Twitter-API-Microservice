@@ -1,0 +1,30 @@
+
+name: Test twitter-api-microservice
+
+on:
+  push:
+    branches:
+      - test
+  workflow_dispatch:
+
+env:
+  NODE_VERSION: '18.x' # set this to the node version to use (supports 8.x, 10.x, 12.x)
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@v4
+
+      - name: Setup Node ${{ env.NODE_VERSION }} Environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: 'Resolve Project Dependencies Using Npm'
+        shell: bash
+        run: |
+          npm install
+          npm run test --if-present
+
