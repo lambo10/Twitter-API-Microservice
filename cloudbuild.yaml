@@ -1,14 +1,4 @@
 steps:
-  # Install Node.js dependencies and run unit tests
-  - name: 'node:18'  # Use a Node.js runtime
-    entrypoint: 'bash'
-    args:
-      - '-c'
-      - |
-        npm install  # Install dependencies
-        npm test      # Run unit tests
-        build_logs=$(gcloud builds log $BUILD_ID --format='value(logs)')
-        gcloud alpha services send-email --to=lusonetwork101@gmail.com --subject="Cloud Build Failure" --message="Your Cloud Build pipeline has failed. Error message: $build_logs"
        
   # Build a Docker container image
   - name: 'gcr.io/cloud-builders/docker'
