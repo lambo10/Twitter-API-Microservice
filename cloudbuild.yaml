@@ -1,11 +1,11 @@
 steps:       
   # Build a Docker container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/twitter-api:latest', '.']
+    args: ['build', '-t', 'gcr.io/$PROJECT_ID/twitter-api:$COMMIT_SHA', '.']
 
   # Push the container image to Container Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/twitter-api:latest']
+    args: ['push', 'gcr.io/$PROJECT_ID/twitter-api:$COMMIT_SHA']
 
   # Deploy the container to Cloud Run
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -14,11 +14,11 @@ steps:
       - 'deploy'
       - 'twitter-api-service'
       - '--image'
-      - 'gcr.io/$PROJECT_ID/twitter-api:latest'
+      - 'gcr.io/$PROJECT_ID/twitter-api:$COMMIT_SHA'
       - '--platform'
       - 'managed'
       - '--allow-unauthenticated'
       - '--region'
       - 'us-central1'
-      # - '--port'
-      # - '8080'
+      - '--port'
+      - '8080'
