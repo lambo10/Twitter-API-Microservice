@@ -20,5 +20,5 @@ steps:
       - '--allow-unauthenticated'
       - '--region'
       - 'us-central1'
-      - '--port'
-      - '8080'
+      # - '--port'
+      # - '8080'
